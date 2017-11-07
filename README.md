@@ -2,7 +2,7 @@
 
 ## First steps toward making a hexapod autonomous
 
-This will be an attempt at getting a program running on an Intel Euclid development kit that sends commands to PhantomX Hexapod.  The ultimate goal will be to have a program manage the sensors on the Euclid device (depth camera, motion camera, accelerometer, gyroscope, etc...) via interacting with them through ROS, being able to interpret the information, and then being able to direct the robot's actions.  The first step toward taking first steps starts with being able to send serial commands from a program running on the Eudlic device to the hexapod.  In order to do so, some setup is needed prior to programming.  Many of these steps will be taken prior to labday.
+This will be an attempt at getting a program running on an Intel Euclid development kit to send commands to a PhantomX Hexapod.  The ultimate goal will be to have a program manage the sensors on the Euclid device (depth camera, motion camera, accelerometer, gyroscope, etc...) via interacting with them through ROS, being able to interpret the information, and then being able to direct the robot's actions.  The first step toward taking first steps starts with being able to send serial commands from a program running on the Eudlic device to the hexapod.  In order to do so, some setup is needed prior to programming.  Many of these steps will be taken prior to labday.
 
 ### On the Euclid device, setup entails:
 
