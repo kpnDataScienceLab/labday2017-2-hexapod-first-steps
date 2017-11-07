@@ -23,13 +23,16 @@ A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple 
 
 * The required hardware (a USB to serial cable) may not be quite right.  If this turns out to be the case, the time will be spent getting the program to interact with the onboard sensors via ROS.
 
-## Potential future work
+## Ideas for future work
 
+* using SLAM to map out a room
+* sentry to recognize humans
 * recognizing and responding to hand gestures
 * recognizing and responding to voice commands
 * learning how to walk from scratch using a genetic algorithm to evolve gaits, given servo feedback, accelerometer input, etc..
 * evolving the most efficient running gait
 * learning how to climb stairs
+* playing fetch
 
 ## Reference material
 * Intel Euclid  https://click.intel.com/intelr-euclidtm-development-kit.html
