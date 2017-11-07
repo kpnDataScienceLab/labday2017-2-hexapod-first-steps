@@ -2,7 +2,7 @@
 
 ## First steps toward making a hexapod autonomous
 
-This will be an attempt at getting a program running on an Intel Euclid development kit that sends commands to PhantomX Hexapod.  The ultimate goal will be to have a program manage the sensors on the Euclid device (depth camera, motion camera, accelerometer, gyroscope, etc...) via interacting with them through ROS, being able to interpret the information, and be able to direct the robot's actions.  In order to get there, the first step toward taking first steps starts with being able to send serial commands from a program running on the Eudlic device to the hexapod.  In order to do so, some setup is needed prior to programming.  Many of these steps will be taken prior to labday.
+This will be an attempt at getting a program running on an Intel Euclid development kit that sends commands to PhantomX Hexapod.  The ultimate goal will be to have a program manage the sensors on the Euclid device (depth camera, motion camera, accelerometer, gyroscope, etc...) via interacting with them through ROS, being able to interpret the information, and then being able to direct the robot's actions.  The first step toward taking first steps starts with being able to send serial commands from a program running on the Eudlic device to the hexapod.  In order to do so, some setup is needed prior to programming.  Many of these steps will be taken prior to labday.
 
 ### On the Euclid device, setup entails:
 
@@ -17,13 +17,11 @@ This will be an attempt at getting a program running on an Intel Euclid developm
 * modification of Arduino sketch running on the Arbotix-M board
 * some reconfiguration of jumpers
 
-A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple program written in Scala and/or Akka will be written that sends commands to the hexapod.  Code from the Virtual Commander will be referenced.  The success case will be getting the hexapod to respond to those commands.  If this happens earlier in the day, then the next step will be to try to incorporate information from the time-of-flight camera for obstacle detection.
+A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple program written in Scala and/or Akka will be written that sends commands to the hexapod.  Code from the Virtual Commander will be referenced as a guide.  The success case will be getting the hexapod to respond to those commands.  If this happens earlier in the day, then the next step will be to try to incorporate information from the time-of-flight camera for obstacle detection.
 
 ## Risks
 
-* The required hardware isn't quite right
-* The Intel Euclid device mauy prevent software from being loaded
-* The memory requirements of 4G aren't large enough to do anything meaningful
+* The required hardware (a USB to serial cable) may not be quite right.  If this turns out to be the case, the time will be spent getting the program to interact with the onboard sensors via ROS.
 
 ## Potential future work
 
