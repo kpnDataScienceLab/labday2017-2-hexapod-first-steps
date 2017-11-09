@@ -40,4 +40,4 @@ A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple 
 
 ## Team so far
 * Bruce Ferguson
-* Gianluigi Bardelloni (remotely)
+* Gianluigi Bardelloni (tentative, remotely)
