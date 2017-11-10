@@ -38,6 +38,12 @@ A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple 
 * Intel Euclid  https://click.intel.com/intelr-euclidtm-development-kit.html
 * PhantomX Hexapod http://www.trossenrobotics.com/phantomx-ax-hexapod.aspx
 
-## Team so far
+## Team
 * Bruce Ferguson
-* Gianluigi Bardelloni (tentative, remotely)
+* Bart Van Deenen
+* Quirijn Meulenberg
+* Hakim Khalafi
+
+# Various Notes
+ssh -o PreferredAuthentications=password euclid@172.20.10.9 -L 8100:localhost:80
+http://172.20.10.9:8080/stream?topic=/camera/color/image_raw
