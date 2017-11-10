@@ -47,3 +47,6 @@ A USB-to-serial cable will connect the Euclid device to the PhantomX.  A simple 
 # Various Notes
 ssh -o PreferredAuthentications=password euclid@172.20.10.9 -L 8100:localhost:80
 http://172.20.10.9:8080/stream?topic=/camera/color/image_raw
+
+After setting '172.20.10.19 euclid' in /etc/hosts, you can send commands to the robot via
+echo '{"rv":128, "rh":128, "lv":128, "lh":127, "buttons":0}' | nc -v euclid 9999 
