@@ -22,35 +22,33 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         # self.request is the TCP socket connected to the client
         data = self.request.recv(1024).strip()
         try:
-            command_json = json.loads(data.decode('utf-8'))
-
-            print("{} wrote: {}".format(self.client_address[0], command_json))
-            command = RemoteControl(**command_json)
-            self.sendToHexapod(command)
+            command=bytesToRc(data)
+            sendToHexapod(command)
             self.request.sendall("OK".encode('utf-8'))
             time.sleep(0.033)
         except Exception as e:
             self.request.sendall(str(e).encode('utf-8'))
 
+def bytesToRc(data):
+    command_json = json.loads(data.decode('utf-8'))
 
+    print("received: {}".format(command_json))
+    return RemoteControl(**command_json)
 
-        # just send back the same data, but upper-cased
+def sendToHexapod(c):
+	""" translate RemoteControl into hexapod remote control values packet """
 
+	buttons = int(('{}'*8).format(c.b7, c.b6, c.b5, c.b4, c.b3, c.b2, c.b1, c.b0), 2)
+	print(buttons)
+	cksum = 255 - ((c.rv + c.rh + c.lv + c.lh + buttons) & 0xFF)
+	print(cksum)
+	packet = struct.pack('BBBBBBBB',
+		0xFF, c.rv, c.rh, c.lv, c.lh, buttons, 0, cksum)
 
-    def sendToHexapod(self, c):
-        """ translate RemoteControl into hexapod remote control values packet """
-
-        buttons = int(('{}'*8).format(c.b7, c.b6, c.b5, c.b4, c.b3, c.b2, c.b1, c.b0), 2)
-        print(buttons)
-        cksum = 255 - ((c.rv + c.rh + c.lv + c.lh + buttons) & 0xFF)
-        print(cksum)
-        packet = struct.pack('BBBBBBBB',
-                0xFF, c.rv, c.rh, c.lv, c.lh, buttons, 0, cksum)
-
-        print("Sending {} to robot".format(hexlify(packet)))
-        with open("/dev/ttyUSB0","wb") as _f:
-            _f.write(packet)
-            _f.flush()
+	print("Sending {} to robot".format(hexlify(packet)))
+	with open("/dev/ttyUSB0","wb") as _f:
+	    _f.write(packet)
+	    _f.flush()
 
 
 def main():
@@ -65,3 +63,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# vim:ts=4:expandtab
