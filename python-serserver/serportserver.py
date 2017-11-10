@@ -39,16 +39,15 @@ def sendToHexapod(c):
 	""" translate RemoteControl into hexapod remote control values packet """
 
 	buttons = int(('{}'*8).format(c.b7, c.b6, c.b5, c.b4, c.b3, c.b2, c.b1, c.b0), 2)
-	print(buttons)
 	cksum = 255 - ((c.rv + c.rh + c.lv + c.lh + buttons) & 0xFF)
-	print(cksum)
 	packet = struct.pack('BBBBBBBB',
 		0xFF, c.rv, c.rh, c.lv, c.lh, buttons, 0, cksum)
-
-	print("Sending {} to robot".format(hexlify(packet)))
+	response = "Sending {} to robot".format(hexlify(packet))
+	print(response)
 	with open("/dev/ttyUSB0","wb") as _f:
 	    _f.write(packet)
 	    _f.flush()
+	return response
 
 
 def main():

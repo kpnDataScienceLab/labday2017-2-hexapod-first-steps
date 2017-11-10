@@ -28,16 +28,12 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
 
         try:
             command=serportserver.bytesToRc(post_data)
-            serportserver.sendToHexapod(command)
+            response = serportserver.sendToHexapod(command)
             self.send_response(200)
             # Send headers
             self.send_header('Content-type','text/plain')
             self.end_headers()
-         
-            # Send message back to client
-            message = "ok"
-            # Write content as utf-8 data
-            self.wfile.write(bytes(message, "utf8"))
+            self.wfile.write(bytes(response, "utf8"))
             time.sleep(0.033)
         except Exception as e:
             self.send_response(500)
